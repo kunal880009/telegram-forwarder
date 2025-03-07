@@ -6,7 +6,7 @@ api_hash = "26c6ffdcb2da4a7f35000d9b551af040"  # Replace with your API hash
 session_name = "forwarder_bot"  # Session file
 
 # Source & Destination
-SOURCE_CHANNEL = "@dummy_channelll"  # Replace with the public channel ID (where messages come from)
+SOURCE_CHANNEL = "@Technicaljs_ShoppingOffers"  # Replace with the public channel ID (where messages come from)
 DESTINATION_BOT = "@link_conversion_bot"  # Replace with your bot's username (without @)
 
 # Initialize client
