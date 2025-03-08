@@ -1,20 +1,25 @@
+import os
+from dotenv import load_dotenv
 from telethon.sync import TelegramClient, events
 
-# Your Telethon API credentials
-api_id = 9784025  # Replace with your API ID
-api_hash = "26c6ffdcb2da4a7f35000d9b551af040"  # Replace with your API hash
-session_name = "forwarder_bot"  # Session file
+# Load environment variables
+load_dotenv()
+
+api_id = int(os.getenv("API_ID"))
+api_hash = os.getenv("API_HASH")
+bot_token = os.getenv("BOT_TOKEN")
+
+session_name = "forwarder_bot"
+
+# Initialize client with bot token
+client = TelegramClient(session_name, api_id, api_hash).start(bot_token=bot_token)
 
 # Source & Destination
-SOURCE_CHANNEL = "@Technicaljs_ShoppingOffers"  # Replace with the public channel ID (where messages come from)
-DESTINATION_BOT = "@link_conversion_bot"  # Replace with your bot's username (without @)
-
-# Initialize client
-client = TelegramClient(session_name, api_id, api_hash)
+SOURCE_CHANNEL = -100XXXXXXXXXX  # Replace with the channel ID
+DESTINATION_BOT = "YOUR_BOT_USERNAME"
 
 @client.on(events.NewMessage(chats=SOURCE_CHANNEL))
 async def forward_message(event):
-    """ Forward message without changes """
     try:
         await client.send_message(DESTINATION_BOT, event.message)
         print(f"✅ Forwarded: {event.message.text[:50]}...")
